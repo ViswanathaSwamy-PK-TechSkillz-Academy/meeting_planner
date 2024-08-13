@@ -1,0 +1,53 @@
+<!-- This should be the first tag -->
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Meeting Planner!</h1>
+<p>
+    This is the demo application for the course
+    <em>Django: Getting Started</em>
+    on <a href="https://www.pluralsight.com">
+        Pluralsight</a>.
+</p>
+
+<img src="{% static 'website/calendar.png' %}" alt="Meeting" width="100px">
+
+<div class="meeting-container">
+    <h2>Meetings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>Duration (hours)</th>
+                <th>Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meeting in meetings %}
+            <tr>
+                <td>
+                    <a href="{% url 'detail' meeting.id %}">
+                        {{ meeting.title }}
+                    </a>
+                </td>
+                <td>{{ meeting.date }}</td>
+                <td>{{ meeting.start_time }}</td>
+                <td>{{ meeting.duration }}</td>
+                <td>{{ meeting.room.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div>
+    <form action="{% url 'rooms' %}">
+        <button type="submit" class="btn-blue">Rooms list</button>
+    </form>
+</div>
+{% endblock %}

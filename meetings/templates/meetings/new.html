@@ -1,0 +1,17 @@
+<!-- This should be the first tag -->
+{% extends "base.html" %}
+
+{% block title %}New Meeting{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Plan a new meeting</h1>
+    <form method="post">
+        <table>
+            {{ form }}
+        </table>
+        {% csrf_token %}
+        <button type="submit">Create</button>
+    </form>
+</div>
+{% endblock %}

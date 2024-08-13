@@ -1,0 +1,15 @@
+<!-- This should be the first tag -->
+{% extends "base.html" %}
+
+{% block title %}Rooms{% endblock %}
+
+{% block content %}
+<h2>Rooms</h2>
+<ul>
+  {% for room in rooms %}
+  <li>
+    {{room}}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

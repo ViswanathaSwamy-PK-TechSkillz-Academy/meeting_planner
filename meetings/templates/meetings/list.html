@@ -1,0 +1,36 @@
+<!-- This should be the first tag -->
+{% extends "base.html" %}
+
+{% block title %}Rooms{% endblock %}
+
+{% block content %}
+<div class="meeting-container">
+    <h2>Meetings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>Duration (hours)</th>
+                <th>Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meeting in meetings %}
+            <tr>
+                <td>
+                    <a href="{% url 'detail' meeting.id %}">
+                        {{ meeting.title }}
+                    </a>
+                </td>
+                <td>{{ meeting.date }}</td>
+                <td>{{ meeting.start_time }}</td>
+                <td>{{ meeting.duration }}</td>
+                <td>{{ meeting.room.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
